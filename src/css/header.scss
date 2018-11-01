@@ -1,0 +1,19 @@
+.header {
+  align-items: center;
+  background: url('../img/bg.jpg');
+  background-origin: border-box;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 60vh;
+  justify-content: center;
+
+  .upper {
+    h1 {
+      display: inline;
+    }
+  }
+}

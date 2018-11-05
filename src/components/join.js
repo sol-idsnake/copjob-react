@@ -1,16 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import TopNav from './topnav';
+import Login from './login';
+import Register from './register';
 import '../css/join.scss';
+import '../css/paper.scss';
 
-const Join = props => (
+const Join = () => (
   <section className="join">
-    <div className="top">
-      <div className="logo">
-        <h4>CopJob</h4>
-      </div>
-      <nav>
-        <Link to="/">Home</Link>
-      </nav>
+    <TopNav />
+    <div className="paper">
+      <Login />
+      <hr />
+      <Register />
     </div>
   </section>
 );

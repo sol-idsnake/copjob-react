@@ -1,0 +1,22 @@
+.register {
+  max-width: 50%;
+  width: 50%;
+
+  form {
+    box-sizing: border-box;
+    padding-left: 1em;
+
+    p {
+      margin-bottom: 0.5em;
+    }
+
+    button {
+      span {
+        a {
+          color: unset;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

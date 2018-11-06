@@ -1,9 +1,8 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import FormControl from '@material-ui/core/FormControl';
-import NativeSelect from '@material-ui/core/NativeSelect';
+// import FormControl from '@material-ui/core/FormControl';
+// import NativeSelect from '@material-ui/core/NativeSelect';
 import { Link } from 'react-router-dom';
-import ContainedButtons from './Button/button';
 import ButtonTest from './Button/buttonTest';
 
 import '../css/divider.scss';
@@ -27,9 +26,9 @@ class Divider extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      position: '',
-      state: '',
-      isToggleOn: false,
+      // position: '',
+      // state: '',
+      // isToggleOn: false,
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -46,45 +45,44 @@ class Divider extends React.Component {
   }
 
   render() {
-    const { classes } = this.props;
-    const { position, state, isToggleOn } = this.state;
+    // const { classes } = this.props;
+    // const { position, state, isToggleOn } = this.state;
 
-    const expandedMenu = isToggleOn ? (
-      <div className="expandedMenuDiv">
-        <FormControl className={classes.formControl}>
-          <NativeSelect
-            value={position}
-            onChange={this.handleChange('position')}
-            name="position"
-            className={classes.selectEmpty}
-          >
-            <option value="">Position</option>
-            <option value="Officer">Officer</option>
-            <option value="Deputy">Deputy</option>
-            <option value="Trooper">Trooper</option>
-          </NativeSelect>
-        </FormControl>
-        <FormControl className={classes.formControl}>
-          <NativeSelect
-            value={state}
-            onChange={this.handleChange('state')}
-            name="state"
-            className={classes.selectEmpty}
-          >
-            <option value="">State</option>
-            <option value="Florida">Florida</option>
-          </NativeSelect>
-        </FormControl>
-      </div>
-    ) : null;
+    // const expandedMenu = isToggleOn ? (
+    //   <div className="expandedMenuDiv">
+    //     <FormControl className={classes.formControl}>
+    //       <NativeSelect
+    //         value={position}
+    //         onChange={this.handleChange('position')}
+    //         name="position"
+    //         className={classes.selectEmpty}
+    //       >
+    //         <option value="">Position</option>
+    //         <option value="Officer">Officer</option>
+    //         <option value="Deputy">Deputy</option>
+    //         <option value="Trooper">Trooper</option>
+    //       </NativeSelect>
+    //     </FormControl>
+    //     <FormControl className={classes.formControl}>
+    //       <NativeSelect
+    //         value={state}
+    //         onChange={this.handleChange('state')}
+    //         name="state"
+    //         className={classes.selectEmpty}
+    //       >
+    //         <option value="">State</option>
+    //         <option value="Florida">Florida</option>
+    //       </NativeSelect>
+    //     </FormControl>
+    //   </div>
+    // ) : null;
 
     return (
       <section className="divider">
-        <ContainedButtons color="secondary" text="Filters" onClick={this.handleClick} />
-        {expandedMenu}
-        <ButtonTest text="Test" />
+        {/* {expandedMenu} */}
+        <ButtonTest text="Filters" />
         <Link to="/join">
-          <ContainedButtons color="secondary" text="Post a job" />
+          <ButtonTest text="Post a job" />
         </Link>
       </section>
     );

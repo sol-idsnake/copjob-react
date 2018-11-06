@@ -2,7 +2,7 @@ import React from 'react';
 import DepartmentItem from './department-item';
 // import fetchDepts from './async/crud';
 import API_BASE_URL from '../config';
-import loader from '../img/loader.svg';
+import { ReactComponent as Loader } from '../img/loader.svg';
 import '../css/listings.scss';
 
 export default class Listings extends React.Component {
@@ -51,7 +51,7 @@ export default class Listings extends React.Component {
       <DepartmentItem department={department} index={index} key={department.name} />
     ));
 
-    const loadAnim = loading ? <img src={loader} alt="Loading Departments" /> : null;
+    const loadAnim = loading ? <Loader /> : null;
 
     return (
       <section className="jobsboard">

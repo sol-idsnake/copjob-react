@@ -4,6 +4,7 @@ import FormControl from '@material-ui/core/FormControl';
 import NativeSelect from '@material-ui/core/NativeSelect';
 import { Link } from 'react-router-dom';
 import ContainedButtons from './Button/button';
+import ButtonTest from './Button/buttonTest';
 
 import '../css/divider.scss';
 
@@ -23,21 +24,33 @@ const styles = theme => ({
 });
 
 class Divider extends React.Component {
-  state = {
-    position: '',
-    state: '',
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      position: '',
+      state: '',
+      isToggleOn: false,
+    };
+
+    this.handleClick = this.handleClick.bind(this);
+  }
 
   handleChange = name => (event) => {
     this.setState({ [name]: event.target.value });
   };
 
+  handleClick() {
+    this.setState(state => ({
+      isToggleOn: !state.isToggleOn,
+    }));
+  }
+
   render() {
     const { classes } = this.props;
-    const { position, state } = this.state;
+    const { position, state, isToggleOn } = this.state;
 
-    return (
-      <section className="divider">
+    const expandedMenu = isToggleOn ? (
+      <div className="expandedMenuDiv">
         <FormControl className={classes.formControl}>
           <NativeSelect
             value={position}
@@ -62,7 +75,14 @@ class Divider extends React.Component {
             <option value="Florida">Florida</option>
           </NativeSelect>
         </FormControl>
+      </div>
+    ) : null;
 
+    return (
+      <section className="divider">
+        <ContainedButtons color="secondary" text="Filters" onClick={this.handleClick} />
+        {expandedMenu}
+        <ButtonTest text="Test" />
         <Link to="/join">
           <ContainedButtons color="secondary" text="Post a job" />
         </Link>

@@ -44,7 +44,7 @@ export default class DepartmentItem extends React.Component {
       <div className="expand">
         <div className="salary">
           <span>
-            This department pays
+            {'This department pays'}
             <em>
               {' '}
               {salary}
@@ -62,6 +62,8 @@ export default class DepartmentItem extends React.Component {
       </div>
     ) : null;
 
+    const minAge = { age } === undefined ? <span className="tags age">{age}</span> : null;
+
     return (
       <li className="department-item" onClick={this.handleClick} onKeyDown={this.handleClick}>
         <div className="department_link_and_location">
@@ -74,7 +76,7 @@ export default class DepartmentItem extends React.Component {
         </div>
         <div className="department_tags">
           <span className="tags position">{position}</span>
-          <span className="tags age">{age}</span>
+          {minAge}
           {needCitizenship}
         </div>
         {expandedContent}

@@ -1,6 +1,6 @@
 .header {
   align-items: center;
-  background: url('../img/bg.jpg');
+  background: url("../img/bg.jpg");
   background-origin: border-box;
   background-repeat: no-repeat;
   background-position: center;
@@ -15,5 +15,10 @@
     h1 {
       display: inline;
     }
+  }
+
+  .lower {
+    padding: 1em;
+    text-align: center;
   }
 }

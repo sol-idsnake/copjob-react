@@ -3,7 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 // import FormControl from '@material-ui/core/FormControl';
 // import NativeSelect from '@material-ui/core/NativeSelect';
 import { Link } from 'react-router-dom';
-import ButtonTest from './Button/buttonTest';
+import Button from './Button/button';
 
 import '../css/divider.scss';
 
@@ -80,9 +80,9 @@ class Divider extends React.Component {
     return (
       <section className="divider">
         {/* {expandedMenu} */}
-        <ButtonTest text="Filters" />
+        <Button text="Filters" />
         <Link to="/join">
-          <ButtonTest text="Post a job" />
+          <Button text="Post a job" />
         </Link>
       </section>
     );

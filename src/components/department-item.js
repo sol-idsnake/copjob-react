@@ -1,5 +1,4 @@
 import React from 'react';
-import Divider from '@material-ui/core/Divider';
 import '../css/department-item.scss';
 
 export default class DepartmentItem extends React.Component {
@@ -80,7 +79,6 @@ export default class DepartmentItem extends React.Component {
           {needCitizenship}
         </div>
         {expandedContent}
-        <Divider />
       </li>
     );
   }

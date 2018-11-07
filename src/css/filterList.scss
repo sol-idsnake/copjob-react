@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
+.filterAction {
+  font-family: "Roboto";
+
+  .filterButton {
+    background: #558fe6;
+    bottom: 1em;
+    border-radius: 1px;
+    display: flex;
+    height: 45px;
+    justify-content: space-around;
+    left: 0;
+    margin: 0 auto;
+    position: fixed;
+    right: 0;
+    width: 128px;
+
+    .filterButtonSvg {
+      height: 18px;
+      width: 18px;
+    }
+  }
+
+  .filterModal {
+    background: #e4e5ea;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+    .topNav {
+      align-items: center;
+      background: #fff;
+      display: flex;
+      height: 60px;
+      margin-bottom: 0.2em;
+
+      .svgClose {
+        height: 25px;
+        // font-size: 16px;
+        // margin-right: 0.2em;
+        padding: 0 1em;
+        width: 25px;
+      }
+
+      span {
+        font-size: 20px;
+        letter-spacing: 0.07em;
+      }
+    }
+
+    .middleNav {
+      background-color: #fff;
+      flex: 1;
+      margin-bottom: 0.2em;
+    }
+
+    .bottomNav {
+      background: #fff;
+
+      button.filterSubmit {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        width: 95%;
+
+        .checkmark {
+          height: 20px;
+          margin-right: 1em;
+          width: 20px;
+        }
+      }
+    }
+  }
+}

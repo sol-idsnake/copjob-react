@@ -6,7 +6,7 @@
   }
   //  and (max-device-width: 1024px)
 
-  svg {
+  .loader {
     display: block;
     margin: 0 auto;
   }
@@ -15,5 +15,8 @@
     display: block;
     margin: 0 auto;
     text-align: center;
+  }
+
+  ul {
   }
 }

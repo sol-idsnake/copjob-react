@@ -2,7 +2,8 @@ import React from 'react';
 import DepartmentItem from './department-item';
 import API_BASE_URL from '../config';
 import { ReactComponent as Loader } from '../img/loader.svg';
-import FilterList from './filterList.js';
+import FilterListMobile from './filterListMobile';
+import FilterListDesk from './filterListDesk';
 import '../css/listings.scss';
 
 export default class Listings extends React.Component {
@@ -53,10 +54,16 @@ export default class Listings extends React.Component {
 
     const loadAnim = loading ? <Loader className="loader" /> : null;
 
+    const filterListcomponent = window.innerWidth >= 1024 ? (
+      <FilterListDesk departments={departments} />
+    ) : (
+      <FilterListMobile />
+    );
+
     return (
       <section className="jobsboard">
         {loadAnim}
-        <FilterList />
+        {filterListcomponent}
         <ul>{departmentList}</ul>
         <span className="error">{error}</span>
       </section>

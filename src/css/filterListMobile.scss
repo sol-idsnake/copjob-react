@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto");
 
-.filterAction {
+.filterActionMobile {
   font-family: "Roboto";
 
   .filterButton {
@@ -22,9 +22,16 @@
     }
   }
 
+  .active {
+    display: flex;
+  }
+
+  .inactive {
+    display: none;
+  }
+
   .filterModal {
     background: #e4e5ea;
-    display: flex;
     flex-direction: column;
     height: 100%;
     left: 0;

@@ -27,10 +27,7 @@ class Register extends React.Component {
       <div className="register">
         <h2>Register</h2>
         <form className={classes.container} noValidate autoComplete="off">
-          <p>
-            When joining CopJob, you must be part of hiring staff for your department, or have
-            hiring privileges.
-          </p>
+          <p>When joining CopJob, you must be part of hiring staff for your department, or have hiring privileges.</p>
           <p>You can only register with an email address issued by your department.</p>
           <Button variant="contained" color="primary" className={classes.button}>
             <Link to="/register">Register</Link>

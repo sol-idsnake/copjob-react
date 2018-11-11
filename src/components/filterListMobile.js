@@ -1,23 +1,31 @@
 import React from 'react';
-// import './mobileFilterModal'
-import '../css/filterList.scss';
+import '../css/filterListMobile.scss';
+import classnames from 'classnames';
 
-class FilterList extends React.Component {
+class FilterListMobile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // filter: null,
+      isToggleOn: false,
     };
+
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  // handleClick() {
-  //   mobileFilterModal();
-  // } handleClick={this.handleClick}
+  handleClick() {
+    this.setState(state => ({
+      isToggleOn: !state.isToggleOn,
+    }));
+  }
 
   render() {
+    const { isToggleOn } = this.state;
+    const display = !isToggleOn ? 'inactive' : 'active';
+    const filterModalClasses = classnames('filterModal', display);
+
     return (
-      <div className="filterAction">
-        <button type="button" className="filterButton">
+      <div className="filterActionMobile">
+        <button type="button" className="filterButton" onClick={this.handleClick}>
           <svg
             aria-hidden="true"
             data-icon="filter"
@@ -33,7 +41,7 @@ class FilterList extends React.Component {
           </svg>
           <span className="buttonTextFilter">Filter</span>
         </button>
-        <div className="filterModal">
+        <div className={filterModalClasses}>
           <div className="topNav">
             <svg
               aria-hidden="true"
@@ -42,6 +50,7 @@ class FilterList extends React.Component {
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 320 512"
               className="svgClose"
+              onClick={this.handleClick}
             >
               <path
                 fill="#999999"
@@ -80,4 +89,4 @@ class FilterList extends React.Component {
   }
 }
 
-export default FilterList;
+export default FilterListMobile;

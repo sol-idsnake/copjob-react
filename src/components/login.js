@@ -51,9 +51,7 @@ class Login extends React.Component {
             margin="dense"
             variant="outlined"
           />
-          <Button variant="contained" color="primary" className={classes.button}>
-            Login
-          </Button>
+          <Button variant="contained" color="primary" className={classes.button}>Login</Button>
         </form>
       </div>
     );

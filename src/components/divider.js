@@ -45,42 +45,8 @@ class Divider extends React.Component {
   }
 
   render() {
-    // const { classes } = this.props;
-    // const { position, state, isToggleOn } = this.state;
-
-    // const expandedMenu = isToggleOn ? (
-    //   <div className="expandedMenuDiv">
-    //     <FormControl className={classes.formControl}>
-    //       <NativeSelect
-    //         value={position}
-    //         onChange={this.handleChange('position')}
-    //         name="position"
-    //         className={classes.selectEmpty}
-    //       >
-    //         <option value="">Position</option>
-    //         <option value="Officer">Officer</option>
-    //         <option value="Deputy">Deputy</option>
-    //         <option value="Trooper">Trooper</option>
-    //       </NativeSelect>
-    //     </FormControl>
-    //     <FormControl className={classes.formControl}>
-    //       <NativeSelect
-    //         value={state}
-    //         onChange={this.handleChange('state')}
-    //         name="state"
-    //         className={classes.selectEmpty}
-    //       >
-    //         <option value="">State</option>
-    //         <option value="Florida">Florida</option>
-    //       </NativeSelect>
-    //     </FormControl>
-    //   </div>
-    // ) : null;
-
     return (
       <section className="divider">
-        {/* {expandedMenu} */}
-        <Button text="Filters" />
         <Link to="/join">
           <Button text="Post a job" />
         </Link>

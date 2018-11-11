@@ -10,7 +10,7 @@ const Header = () => (
       </h1>
     </div>
     <div className="lower">
-      <h1> Currently available in: Florida</h1>
+      <h1>Currently available in: Florida</h1>
     </div>
   </section>
 );

@@ -79,15 +79,6 @@ class RegistrationForm extends React.Component {
               margin="dense"
               variant="outlined"
             />
-            <TextField
-              id="outlined-source-input"
-              label="How did you hear about us?"
-              className={classNames(classes.textField, classes.dense)}
-              type="source"
-              name="source"
-              margin="dense"
-              variant="outlined"
-            />
           </form>
         </div>
       </div>

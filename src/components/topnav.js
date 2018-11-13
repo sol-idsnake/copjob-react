@@ -9,6 +9,7 @@ const TopNav = () => (
     </div>
     <nav>
       <Link to="/">Home</Link>
+      <Link to="/join">Login</Link>
     </nav>
   </div>
 );

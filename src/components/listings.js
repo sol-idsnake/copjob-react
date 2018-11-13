@@ -41,31 +41,35 @@ export default class Listings extends React.Component {
         });
       })
       .catch(err => this.setState({
-        error: 'Could not load departments',
+        error: 'Could not load departments, please try again later',
         loading: false,
       }));
   }
 
   render() {
     const { departments, error, loading } = this.state;
+
     const departmentList = departments.map((department, index) => (
       <DepartmentItem department={department} index={index} key={department.name} />
     ));
 
-    const loadAnim = loading ? <Loader className="loader" /> : null;
-
-    const filterListcomponent = window.innerWidth >= 1024 ? (
+    const filterComp = window.innerWidth >= 1024 ? (
       <FilterListDesk departments={departments} />
     ) : (
       <FilterListMobile />
     );
 
+    const filterListcomponent = departmentList.length !== 0 ? filterComp : null;
+    const loadAnim = loading ? <Loader className="loader" /> : null;
+    const filledDeptList = departmentList.length === 0 ? null : <ul>{departmentList}</ul>;
+    const errorSpan = error ? <span className="error">{error}</span> : null;
+
     return (
       <section className="jobsboard">
-        {loadAnim}
         {filterListcomponent}
-        <ul>{departmentList}</ul>
-        <span className="error">{error}</span>
+        {loadAnim}
+        {filledDeptList}
+        {errorSpan}
       </section>
     );
   }

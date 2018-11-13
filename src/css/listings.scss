@@ -12,12 +12,18 @@
   .loader {
     display: block;
     margin: 0 auto;
+    left: 0;
+    padding-top: 2em;
+    position: absolute;
+    right: 0;
   }
 
   .error {
     display: block;
     margin: 0 auto;
+    padding: 2em 0 0 0;
     text-align: center;
+    width: 60%;
   }
 
   ul {

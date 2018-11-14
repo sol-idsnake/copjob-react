@@ -33,22 +33,36 @@ export default class DepartmentItem extends React.Component {
       },
     } = this.props;
 
-    const needCitizenship = citizenship ? (
+    const { isToggleOn } = this.state;
+
+    const hasName = name ? <h3>{name}</h3> : <h3>Can{"'"}t retrieve name</h3>;
+    const hasLocation = location && state ? (
+      <span>
+        {location}, {state}
+      </span>
+    ) : (
+      <span>Full location unavailable</span>
+    );
+    const hasSalary = salary ? (
+      <span>
+        This department pays <em>{salary}</em>
+      </span>
+    ) : (
+      <em>Salary unavailable</em>
+    );
+    const hasCitizenship = citizenship ? <span> and requires you to be a citizen</span> : null;
+    const tagAge = age ? <span className="tags age">{age}</span> : null;
+    const tagCitizenship = citizenship ? (
       <span className="tags citizenship">Requires citizenship</span>
     ) : null;
-
-    const { isToggleOn } = this.state;
+    const tagPosition = position ? <span className="tags position">{position}</span> : null;
 
     const expandedContent = isToggleOn ? (
       <div className="expand">
         <div className="salary">
           <span>
-            {'This department pays'}
-            <em>
-              {' '}
-              {salary}
-            </em>
-            {citizenship ? ' and requires you to be a citizen' : null}
+            {hasSalary}
+            {hasCitizenship}
           </span>
         </div>
         <div>
@@ -61,22 +75,16 @@ export default class DepartmentItem extends React.Component {
       </div>
     ) : null;
 
-    const minAge = { age } === undefined ? <span className="tags age">{age}</span> : null;
-
     return (
       <li className="department-item" onClick={this.handleClick} onKeyDown={this.handleClick}>
         <div className="department_link_and_location">
-          <h3>{name}</h3>
-          <span>
-            {location}
-            {', '}
-            {state}
-          </span>
+          {hasName}
+          {hasLocation}
         </div>
         <div className="department_tags">
-          <span className="tags position">{position}</span>
-          {minAge}
-          {needCitizenship}
+          {tagPosition}
+          {tagAge}
+          {tagCitizenship}
         </div>
         {expandedContent}
       </li>

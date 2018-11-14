@@ -3,6 +3,8 @@ import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 // import Button from '@material-ui/core/Button';
 import classNames from 'classnames';
+import PhoneNumber from './RegistrationComponents/phoneNumber';
+import DepartmentSelector from './RegistrationComponents/departmentSelector';
 import TopNav from './topnav';
 import '../css/registrationForm.scss';
 
@@ -13,10 +15,12 @@ const styles = theme => ({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+    width: '100%',
   },
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
+    width: '300px',
   },
   button: {
     margin: theme.spacing.unit,
@@ -70,15 +74,8 @@ class RegistrationForm extends React.Component {
               margin="dense"
               variant="outlined"
             />
-            <TextField
-              id="outlined-department-input"
-              label="Associated Department"
-              className={classNames(classes.textField, classes.dense)}
-              type="department"
-              name="department"
-              margin="dense"
-              variant="outlined"
-            />
+            <PhoneNumber margin="normal" variant="outlined" />
+            <DepartmentSelector />
           </form>
         </div>
       </div>

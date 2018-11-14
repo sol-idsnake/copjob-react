@@ -48,7 +48,7 @@ export default class Listings extends React.Component {
 
   render() {
     const { departments, error, loading } = this.state;
-    console.log(departments);
+
     const departmentList = departments.map((department, index) => (
       <DepartmentItem department={department} index={index} key={department.name} />
     ));

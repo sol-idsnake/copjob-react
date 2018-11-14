@@ -25,7 +25,7 @@ export default class DepartmentItem extends React.Component {
         location,
         state,
         position,
-        salary,
+        salary: { minRange, maxRange },
         age,
         citizenship,
         description,
@@ -43,35 +43,59 @@ export default class DepartmentItem extends React.Component {
     ) : (
       <span>Full location unavailable</span>
     );
-    const hasSalary = salary ? (
-      <span>
-        This department pays <em>{salary}</em>
-      </span>
-    ) : (
-      <em>Salary unavailable</em>
-    );
-    const hasCitizenship = citizenship ? <span> and requires you to be a citizen</span> : null;
-    const tagAge = age ? <span className="tags age">{age}</span> : null;
-    const tagCitizenship = citizenship ? (
-      <span className="tags citizenship">Requires citizenship</span>
-    ) : null;
-    const tagPosition = position ? <span className="tags position">{position}</span> : null;
 
-    const expandedContent = isToggleOn ? (
-      <div className="expand">
-        <div className="salary">
-          <span>
-            {hasSalary}
-            {hasCitizenship}
-          </span>
-        </div>
+    let hasSalary = <span>This department has no current salary information, </span>;
+    if (minRange) {
+      hasSalary = (
+        <span>
+          This department pays a minimum of <em>{minRange}</em>,
+        </span>
+      );
+    } else if (maxRange) {
+      hasSalary = (
+        <span>
+          This department pays a maximum of <em>{maxRange}</em>,
+        </span>
+      );
+    } else if (minRange && maxRange) {
+      hasSalary = (
+        <span>
+          This department pays between <em>{minRange}</em> and <em>{maxRange}</em>,
+        </span>
+      );
+    }
+
+    let hasCitizenship = <span> and it provided no information about citizenship.</span>;
+    if (citizenship) {
+      hasCitizenship = <span> and requires you to be a citizen.</span>;
+    }
+
+    let hasDescription = <p>This department has not entered a job description.</p>;
+    if (description) {
+      hasDescription = (
         <div>
           <p>The following description is provided by the agency:</p>
           <p>{description}</p>
         </div>
-        <a target="_blank" href={`${link}`} rel="noopener noreferrer">
+      );
+    }
+    console.log(description);
+    const tagPosition = position ? <span className="tags position">{position}</span> : null;
+    const tagAge = age ? <span className="tags age">{age}</span> : null;
+    const tagCitizenship = citizenship ? (
+      <span className="tags citizenship">Requires citizenship</span>
+    ) : null;
+
+    const expandedContent = isToggleOn ? (
+      <div className="expand">
+        <div className="salary">
+          {hasSalary}
+          {hasCitizenship}
+        </div>
+        <div className="desription">{hasDescription}</div>
+        {/* <a target="_blank" href={`${link}`} rel="noopener noreferrer">
           {tag}
-        </a>
+        </a> */}
       </div>
     ) : null;
 

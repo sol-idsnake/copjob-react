@@ -29,7 +29,7 @@ export default class DepartmentItem extends React.Component {
         age,
         citizenship,
         description,
-        url: { link, tag },
+        url,
       },
     } = this.props;
 
@@ -79,7 +79,16 @@ export default class DepartmentItem extends React.Component {
         </div>
       );
     }
-    console.log(description);
+
+    let hasLink = <span>This department provided no link to their site.</span>;
+    if (url && name) {
+      hasLink = (
+        <a target="_blank" href={url} rel="noopener noreferrer">
+          {name}
+        </a>
+      );
+    }
+
     const tagPosition = position ? <span className="tags position">{position}</span> : null;
     const tagAge = age ? <span className="tags age">{age}</span> : null;
     const tagCitizenship = citizenship ? (
@@ -93,9 +102,7 @@ export default class DepartmentItem extends React.Component {
           {hasCitizenship}
         </div>
         <div className="desription">{hasDescription}</div>
-        {/* <a target="_blank" href={`${link}`} rel="noopener noreferrer">
-          {tag}
-        </a> */}
+        {hasLink}
       </div>
     ) : null;
 

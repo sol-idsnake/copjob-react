@@ -2,6 +2,7 @@
   "name": "copjob-react",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://quizzical-clarke-da2ef3.netlify.com/",
   "dependencies": {
     "@material-ui/core": "^3.5.1",
     "autosuggest-highlight": "^3.1.1",

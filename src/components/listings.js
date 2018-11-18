@@ -27,6 +27,7 @@ export default class Listings extends React.Component {
     });
     return fetch(`${API_BASE_URL}/dept/get/`, {
       method: 'GET',
+      credentials: 'include',
     })
       .then((res) => {
         if (!res.ok) {

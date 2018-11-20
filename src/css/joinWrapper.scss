@@ -1,0 +1,17 @@
+.join_wrapper {
+  flex-basis: 100%;
+  padding: 1em 0;
+
+  .field-input-wrapper {
+    margin-bottom: 1em;
+
+    & .join_Component {
+      border: 1px solid #d5d8db;
+      border-radius: 3px;
+      box-sizing: border-box;
+      outline: 0;
+      padding: 0.7em 0.4em;
+      width: 100%;
+    }
+  }
+}

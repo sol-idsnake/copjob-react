@@ -15,7 +15,6 @@
     }
   },
   "rules": {
-    "jsx-a11y/no-noninteractive-element-interactions": 1,
     "react/jsx-filename-extension": 0,
     "react/prefer-stateless-function": 0,
     "react/prop-types": 0,

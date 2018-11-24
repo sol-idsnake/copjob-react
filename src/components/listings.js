@@ -2,8 +2,8 @@ import React from 'react';
 import DepartmentItem from './department-item';
 import API_BASE_URL from '../config';
 import { ReactComponent as Loader } from '../img/loader.svg';
-import FilterListMobile from './filterListMobile';
-import FilterListDesk from './filterListDesk';
+import FilterComponentMobile from './filterComponentMobile';
+import FilterComponentDesktop from './filterComponentDesktop';
 import '../css/listings.scss';
 
 export default class Listings extends React.Component {
@@ -54,12 +54,7 @@ export default class Listings extends React.Component {
       <DepartmentItem department={department} index={index} key={department.name} />
     ));
 
-    const filterComp = window.innerWidth >= 1024 ? (
-      <FilterListDesk departments={departments} />
-    ) : (
-      <FilterListMobile />
-    );
-
+    const filterComp = window.innerWidth >= 1024 ? <FilterComponentDesktop /> : <FilterComponentMobile />;
     const filterListcomponent = departmentList.length !== 0 ? filterComp : null;
     const loadAnim = loading ? <Loader className="loader" /> : null;
     const filledDeptList = departmentList.length === 0 ? null : <ul>{departmentList}</ul>;

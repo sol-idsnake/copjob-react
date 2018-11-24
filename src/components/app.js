@@ -6,7 +6,7 @@ import LandingPage from './landingpage';
 // import RegistrationForm from './registrationForm';
 
 const AsyncJoin = asyncComponent(() => import('./join'));
-const AsyncRegistrationForm = asyncComponent(() => import('./registrationForm'));
+const AsyncRegistrationForm = asyncComponent(() => import('./registerComponent'));
 
 const App = () => (
   <Router>

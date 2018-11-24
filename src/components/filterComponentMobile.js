@@ -2,7 +2,7 @@ import React from 'react';
 import '../css/filterListMobile.scss';
 import classnames from 'classnames';
 
-class FilterListMobile extends React.Component {
+class FilterComponentMobile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -89,4 +89,4 @@ class FilterListMobile extends React.Component {
   }
 }
 
-export default FilterListMobile;
+export default FilterComponentMobile;

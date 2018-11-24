@@ -18,7 +18,7 @@ const styles = theme => ({
   },
 });
 
-class FilterListDesk extends React.Component {
+class FilterComponentDesktop extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -70,4 +70,4 @@ class FilterListDesk extends React.Component {
 }
 
 // export default FilterListDesk;
-export default withStyles(styles)(FilterListDesk);
+export default withStyles(styles)(FilterComponentDesktop);

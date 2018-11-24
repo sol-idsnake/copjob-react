@@ -2,10 +2,6 @@ import React from 'react';
 import '../css/joinWrapper.scss';
 
 class RegisterComponent extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="join_wrapper">

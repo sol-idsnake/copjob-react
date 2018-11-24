@@ -34,7 +34,6 @@ export default class DepartmentItem extends React.Component {
     } = this.props;
 
     const { isToggleOn } = this.state;
-
     const hasName = name ? <h3>{name}</h3> : <h3>Can{"'"}t retrieve name</h3>;
     const hasLocation = location && state ? (
       <span>
@@ -45,22 +44,22 @@ export default class DepartmentItem extends React.Component {
     );
 
     let hasSalary = <span>This department has no current salary information, </span>;
-    if (minRange) {
+    if (minRange && maxRange) {
       hasSalary = (
         <span>
-          This department pays a minimum of <em>{minRange}</em>,
+          This department pays between $<em>{minRange}</em> and $<em>{maxRange}</em>,
+        </span>
+      );
+    } else if (minRange) {
+      hasSalary = (
+        <span>
+          This department pays a minimum of $<em>{minRange}</em>,
         </span>
       );
     } else if (maxRange) {
       hasSalary = (
         <span>
-          This department pays a maximum of <em>{maxRange}</em>,
-        </span>
-      );
-    } else if (minRange && maxRange) {
-      hasSalary = (
-        <span>
-          This department pays between <em>{minRange}</em> and <em>{maxRange}</em>,
+          This department pays a maximum of $<em>{maxRange}</em>,
         </span>
       );
     }

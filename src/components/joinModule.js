@@ -1,8 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
 import LoginComponent from './loginComponent';
-import RegisterComponent from './registerComponent';
+// import RegisterComponent from './registerComponent';
+import asyncComponent from './async/asyncComponent';
 import '../css/joinModule.scss';
+
+const AsyncRegisterComponent = asyncComponent(() => import('./registerComponent'));
 
 class JoinModule extends React.Component {
   constructor(props) {
@@ -18,7 +21,7 @@ class JoinModule extends React.Component {
 
   render() {
     const { activeTab } = this.state;
-    const joinComponent = activeTab === 'login' ? <LoginComponent /> : <RegisterComponent />;
+    const joinComponent = activeTab === 'login' ? <LoginComponent /> : <AsyncRegisterComponent />;
 
     return (
       <div className="wrapper">

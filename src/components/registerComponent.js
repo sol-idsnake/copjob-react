@@ -7,7 +7,6 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import { withStyles } from '@material-ui/core/styles';
-import API_BASE_URL from '../config';
 import '../css/joinWrapper.scss';
 
 const styles = theme => ({

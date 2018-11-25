@@ -13,12 +13,20 @@ export default class Listings extends React.Component {
       departments: [],
       error: null,
       loading: false,
+      currentPage: 1,
+      deptartmentsPerPage: 5,
     };
   }
 
   componentDidMount() {
     this.fetchDepts();
   }
+
+  handleClick = (event) => {
+    this.setState({
+      currentPage: Number(event.target.id),
+    });
+  };
 
   fetchDepts() {
     this.setState({
@@ -48,16 +56,39 @@ export default class Listings extends React.Component {
   }
 
   render() {
-    const { departments, error, loading } = this.state;
+    const {
+      departments, deptartmentsPerPage, error, loading, currentPage,
+    } = this.state;
 
-    const departmentList = departments.map((department, index) => (
+    const indexOfLastTodo = currentPage * deptartmentsPerPage;
+    const indexOfFirstTodo = indexOfLastTodo - deptartmentsPerPage;
+    const currentDepartments = departments.slice(indexOfFirstTodo, indexOfLastTodo);
+
+    const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(departments.length / deptartmentsPerPage); i++) {
+      pageNumbers.push(i);
+    }
+
+    const renderPageNumbers = pageNumbers.map(number => (
+      <li key={number} id={number} onClick={this.handleClick} onKeyDown={this.handleClick}>
+        {number}
+      </li>
+    ));
+
+    const departmentList = currentDepartments.map((department, index) => (
       <DepartmentItem department={department} index={index} key={department.name} />
     ));
 
     const filterComp = window.innerWidth >= 1024 ? <FilterComponentDesktop /> : <FilterComponentMobile />;
     const filterListcomponent = departmentList.length !== 0 ? filterComp : null;
     const loadAnim = loading ? <Loader className="loader" /> : null;
-    const filledDeptList = departmentList.length === 0 ? null : <ul>{departmentList}</ul>;
+    const filledDeptList = departmentList.length === 0 ? null : (
+      <div className="content">
+        <ul className="departments">{departmentList}</ul>
+        <ul className="pagination">{renderPageNumbers}</ul>
+      </div>
+    );
+
     const errorSpan = error ? <span className="error">{error}</span> : null;
 
     return (

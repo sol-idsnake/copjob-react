@@ -26,13 +26,31 @@
     width: 60%;
   }
 
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 2em 0 0 0;
+  .content {
+    width: 100%;
 
-    @media screen and (min-device-width: 1024px) {
-      width: 100%;
+    .departments {
+      list-style-type: none;
+      margin: 0;
+      padding: 2em 0 0 0;
+
+      @media screen and (min-device-width: 1024px) {
+        width: 100%;
+      }
+    }
+
+    .pagination {
+      background: #3f51b5;
+      display: flex;
+      justify-content: center;
+      list-style-type: none;
+      padding: 0;
+
+      & li {
+        color: #fff;
+        cursor: pointer;
+        padding: 0.5em;
+      }
     }
   }
 }

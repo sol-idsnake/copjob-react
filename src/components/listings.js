@@ -11,6 +11,7 @@ export default class Listings extends React.Component {
     super(props);
     this.state = {
       departments: [],
+      filteredDepartments: [],
       error: null,
       loading: false,
       currentPage: 1,
@@ -26,6 +27,22 @@ export default class Listings extends React.Component {
     this.setState({
       currentPage: Number(event.target.id),
     });
+  };
+
+  handleFilter = (event) => {
+    const { departments } = this.state;
+    const target = event.target;
+    let updateDepartments = departments;
+    updateDepartments = updateDepartments.filter((user) => {
+      let type;
+      if (target.name === 'name') {
+        type = user.name;
+      } else if (target.name === 'email') {
+        type = user.email;
+      }
+      return type.toLowerCase().search(target.value.toLowerCase()) !== -1;
+    });
+    this.setState({ filteredDepartments: updateDepartments });
   };
 
   fetchDepts() {
@@ -46,6 +63,7 @@ export default class Listings extends React.Component {
       .then((departments) => {
         this.setState({
           departments,
+          filteredDepartments: departments,
           loading: false,
         });
       })
@@ -57,15 +75,20 @@ export default class Listings extends React.Component {
 
   render() {
     const {
-      departments, deptartmentsPerPage, error, loading, currentPage,
+      departments,
+      deptartmentsPerPage,
+      error,
+      loading,
+      currentPage,
+      filteredDepartments,
     } = this.state;
 
     const indexOfLastTodo = currentPage * deptartmentsPerPage;
     const indexOfFirstTodo = indexOfLastTodo - deptartmentsPerPage;
-    const currentDepartments = departments.slice(indexOfFirstTodo, indexOfLastTodo);
+    const currentDepartments = filteredDepartments.slice(indexOfFirstTodo, indexOfLastTodo);
 
     const pageNumbers = [];
-    for (let i = 1; i <= Math.ceil(departments.length / deptartmentsPerPage); i++) {
+    for (let i = 1; i <= Math.ceil(departments.length / deptartmentsPerPage); i += 1) {
       pageNumbers.push(i);
     }
 
@@ -79,10 +102,22 @@ export default class Listings extends React.Component {
       <DepartmentItem department={department} index={index} key={department.name} />
     ));
 
-    const filterComp = window.innerWidth >= 1024 ? <FilterComponentDesktop /> : <FilterComponentMobile />;
-    const filterListcomponent = departmentList.length !== 0 ? filterComp : null;
+    const filterComp = window.innerWidth >= 1024 ? (
+      <FilterComponentDesktop onChange={this.handleFilter} />
+    ) : (
+      <FilterComponentMobile />
+    );
+
+    const emptyList = (
+      <div className="content">
+        <span>Your criteria doesn&apos;t match any departments.</span>
+      </div>
+    );
+    // const filterListcomponent = departmentList.length !== 0 ? filterComp : null;
     const loadAnim = loading ? <Loader className="loader" /> : null;
-    const filledDeptList = departmentList.length === 0 ? null : (
+    const filledDeptList = departmentList.length === 0 ? (
+      emptyList
+    ) : (
       <div className="content">
         <ul className="departments">{departmentList}</ul>
         <ul className="pagination">{renderPageNumbers}</ul>
@@ -93,7 +128,7 @@ export default class Listings extends React.Component {
 
     return (
       <section className="jobsboard">
-        {filterListcomponent}
+        {filterComp}
         {loadAnim}
         {filledDeptList}
         {errorSpan}

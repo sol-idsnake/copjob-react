@@ -2,9 +2,6 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
-import InputLabel from '@material-ui/core/InputLabel';
-import Select from '@material-ui/core/Select';
 
 import '../css/filterListDesk.scss';
 
@@ -19,23 +16,8 @@ const styles = theme => ({
 });
 
 class FilterComponentDesktop extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      anySearch: '',
-      age: '',
-    };
-  }
-
-  handleChange = name => (event) => {
-    this.setState({
-      [name]: event.target.value,
-    });
-  };
-
   render() {
-    const { classes } = this.props;
-    const { anySearch, age } = this.state;
+    const { classes, onChange } = this.props;
 
     return (
       <div className="filterListDesk">
@@ -48,19 +30,9 @@ class FilterComponentDesktop extends React.Component {
                 type="search"
                 className={classes.textField}
                 margin="dense"
-                value={anySearch}
-                onChange={this.handleChange('anySearch')}
+                name="name"
+                onChange={onChange}
               />
-            </FormControl>
-            <FormControl className={classes.formControl}>
-              <InputLabel htmlFor="age-simple">Age</InputLabel>
-              <Select value={age} onChange={this.handleChange('age')}>
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
-                <MenuItem value={19}>19</MenuItem>
-                <MenuItem value={21}>21</MenuItem>
-              </Select>
             </FormControl>
           </div>
         </form>

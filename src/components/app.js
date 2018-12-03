@@ -7,10 +7,10 @@ const AsyncJoin = asyncComponent(() => import('./join'));
 
 const App = () => (
   <Router>
-    <div>
+    <React.Fragment>
       <Route exact path="/" component={LandingPage} />
       <Route exact path="/join" component={AsyncJoin} />
-    </div>
+    </React.Fragment>
   </Router>
 );
 

@@ -108,11 +108,10 @@ export default class Listings extends React.Component {
       <FilterComponentMobile />
     );
 
-    const emptyList = (
-      <div className="content">
-        <span>Your criteria doesn&apos;t match any departments.</span>
-      </div>
-    );
+    const emptyList = departments ? (
+      <span className="error">Your criteria doesn&apos;t match any departments.</span>
+    ) : null;
+
     // const filterListcomponent = departmentList.length !== 0 ? filterComp : null;
     const loadAnim = loading ? <Loader className="loader" /> : null;
     const filledDeptList = departmentList.length === 0 ? (
